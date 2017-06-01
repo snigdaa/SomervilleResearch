@@ -22,10 +22,7 @@ redshift=0.1
 image_width = 200 #kpc
 
 # ------------------------
-
-
 distance = Planck13.luminosity_distance(redshift).cgs.value
-
 
 # Extract the image for the first inclination, and scale to 300pc. We
 # have to specify group=1 as there is no image in group 0.
@@ -34,14 +31,6 @@ image = m.get_image(distance=distance, units='mJy')
 # Open figure and create axes
 fig = plt.figure()
 
-
-#ax = fig.add_subplot(111)
-
-#calculate image width in kpc
-#w = image.x_max * u.cm
-#w = w.to(u.kpc)
-
-#finalArr = np.empty_like(image[:,:,0])
 totShowVal = image.val[0, :, :, 0]
 for idx, fil in enumerate(filters):
     wav = fil
@@ -55,17 +44,6 @@ for idx, fil in enumerate(filters):
     
 #plot the beast
 loggedAr = np.log(totShowVal)
-
-#hdu = fits.PrimaryHDU(loggedAr)
-#hdulist = fits.HDUList([hdu])
-#hdulist.writeto("loggedImage.fits")
-#hdulist.close()
-
-#hdu = fits.PrimaryHDU(totShowVal)
-#hdulist = fits.HDUList([hdu])
-#hdulist.writeto("originalImage.fits")
-#hdulist.close()
-
 
 props = data_properties(totShowVal)
 columns = ['id', 'xcentroid', 'ycentroid', 'semimajor_axis_sigma', 'semiminor_axis_sigma', 'orientation']

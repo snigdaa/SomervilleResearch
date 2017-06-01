@@ -14,8 +14,8 @@ from astropy.io import fits
 # modifiable header
 # ------------------------
 
-filters = np.loadtxt('~/Work/Vfiles/V_johnson.txt')
-thru = np.loadtxt('~/Work/Vfiles/V_thruput.txt', dtype='double')
+filters = np.loadtxt('/home/sss274/Work/Vfiles/V_johnson.txt')
+thru = np.loadtxt('/home/sss274/Work/Vfiles/V_thruput.txt', dtype='double')
 
 m = ModelOutput('/home/sss274/Work/Outputs/cosmological/88/m0948.088v.rtout.image')
 redshift=0.1
@@ -45,6 +45,11 @@ for idx, fil in enumerate(filters):
 #plot the beast
 loggedAr = np.log(totShowVal)
 
+#save np arrays to files for future use
+np.save(loggedAr, loggedAr)
+np.save(totAr, totShowVal)
+
+
 props = data_properties(totShowVal)
 columns = ['id', 'xcentroid', 'ycentroid', 'semimajor_axis_sigma', 'semiminor_axis_sigma', 'orientation']
 position = (props.xcentroid.value, props.ycentroid.value)
@@ -58,4 +63,4 @@ apertures = EllipticalAperture(position, a, b, theta=theta)
 img = plt.imshow(totShowVal, cmap='Spectral', interpolation='nearest')
 finalImg = apertures.plot(color='#898989')
 
-fig.savefig('isophot_v88.png', bbox_inches='tight',dpi=300)
+fig.savefig('isophotCentroid_v88.png', bbox_inches='tight',dpi=300)
