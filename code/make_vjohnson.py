@@ -11,8 +11,8 @@ import astropy.units as u
 # modifiable header
 # ------------------------
 
-filters = np.loadtxt('V_johnson.txt')
-thru = np.loadtxt('V_thruput.txt', dtype='double')
+filters = np.loadtxt('~/Work/Vfiles/V_johnson.txt')
+thru = np.loadtxt('~/Work/Vfiles/V_thruput.txt', dtype='double')
 
 m = ModelOutput('/home/sss274/Work/Outputs/diskMerger/85/merger.085v.rtout.image')
 redshift=2
