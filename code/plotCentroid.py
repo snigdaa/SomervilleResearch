@@ -1,4 +1,4 @@
-import numpy as np
+import numpy as nope
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -14,8 +14,8 @@ from astropy.io import fits
 # modifiable header
 # ------------------------
 
-filters = np.loadtxt('V_johnson.txt')
-thru = np.loadtxt('V_thruput.txt', dtype='double')
+filters = np.loadtxt('~/Work/Vfiles/V_johnson.txt')
+thru = np.loadtxt('~/Work/Vfiles/V_thruput.txt', dtype='double')
 
 m = ModelOutput('/home/sss274/Work/Outputs/cosmological/88/m0948.088v.rtout.image')
 redshift=0.1
@@ -78,6 +78,6 @@ theta = props.orientation.value
 
 apertures = EllipticalAperture(position, a, b, theta=theta)
 img = plt.imshow(totShowVal, cmap='Spectral', interpolation='nearest')
-finalImg = apertures.plot(color='#d62728')
+finalImg = apertures.plot(color='#898989')
 
-fig.savefig('isophot_v88.png', bbox_inches='tight',dpi=150)
+fig.savefig('isophot_v88.png', bbox_inches='tight',dpi=300)
